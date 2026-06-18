@@ -10,7 +10,7 @@ RUN a2enmod rewrite
 COPY . /var/www/html/
 
 # Make the uploads directory writable
-RUN chmod -R 777 /var/www/html/uploads/
+RUN mkdir -p /var/www/html/uploads/ && chmod -R 777 /var/www/html/uploads/
 
 # Expose port 80
 EXPOSE 80
