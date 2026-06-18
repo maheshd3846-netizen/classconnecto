@@ -1,11 +1,10 @@
 <?php
 // db/connection.php
 
-$host = 'localhost';
-$db   = 'classconnecto';
-// Adjust user and password to your local XAMPP setup
-$user = 'root';
-$pass = ''; 
+$host = getenv('DB_HOST') ?: 'localhost';
+$db   = getenv('DB_NAME') ?: 'classconnecto';
+$user = getenv('DB_USER') ?: 'root';
+$pass = getenv('DB_PASS') ?: ''; 
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

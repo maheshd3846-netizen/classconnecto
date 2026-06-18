@@ -6,9 +6,12 @@ if(!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Load config
-$config = require '../config.php';
-$api_key = $config['gemini_api_key'] ?? '';
+// Load config from environment or fallback to config.php
+$api_key = getenv('GEMINI_API_KEY');
+if (!$api_key && file_exists('../config.php')) {
+    $config = require '../config.php';
+    $api_key = $config['gemini_api_key'] ?? '';
+}
 
 if(empty($api_key) || $api_key === 'YOUR_GEMINI_API_KEY_HERE') {
      echo json_encode(['error' => 'API Key not configured. Please add your Gemini API Key in config.php']);
