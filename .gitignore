@@ -1,0 +1,5 @@
+config.php
+php.zip
+php_bin/
+uploads/
+.DS_Store
